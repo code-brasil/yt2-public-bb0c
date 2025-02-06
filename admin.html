@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="admin.js"></script>
+</head>
+<body>
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Admin Panel</h1>
+        <h2 class="text-2xl font-bold mb-2">Add Course</h2>
+        <form id="add-course-form">
+            <div class="mb-2">
+                <label for="title" class="block font-semibold">Title:</label>
+                <input type="text" id="title" name="title" class="border px-2 py-1 w-full">
+            </div>
+            <div class="mb-2">
+                <label for="description" class="block font-semibold">Description:</label>
+                <textarea id="description" name="description" class="border px-2 py-1 w-full"></textarea>
+            </div>
+            <div class="mb-2">
+                <label for="video-urls" class="block font-semibold">Video URLs (one per line):</label>
+                <textarea id="video-urls" name="video-urls" class="border px-2 py-1 w-full"></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2">Add Course</button>
+        </form>
+        <h2 class="text-2xl font-bold my-4">Existing Courses</h2>
+        <div id="admin-courses"></div>
+    </div>
+    <a href="index.html" class="text-blue-500 hover:underline">Back to Courses</a>
+</body>
+</html>

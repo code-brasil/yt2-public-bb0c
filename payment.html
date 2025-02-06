@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="payment.js"></script>
+    <style>
+        /* Glassmorphism style */
+        body {
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            animation: fadeIn 1s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass max-w-md w-full">
+        <h1 class="text-4xl font-bold mb-6">Complete Payment</h1>
+        <p>Select the subscription level you wish to purchase:</p>
+        <div id="levels" class="mt-4 space-y-4"></div>
+    </div>
+</body>
+</html>

@@ -10,22 +10,30 @@ document.addEventListener('DOMContentLoaded', function() {
             coursesDiv.innerHTML = '';
             data.courses.forEach(course => {
                 const courseDiv = document.createElement('div');
-                courseDiv.className = "mb-4";
+                courseDiv.className = "bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 flex justify-between items-center";
+                const infoDiv = document.createElement('div');
                 const title = document.createElement('h2');
-                title.className = "text-xl font-bold";
-                title.textContent = course.title;
+                title.className = "text-xl font-bold flex items-center";
+                const icon = document.createElement('span');
+                icon.className = "material-icons mr-2";
+                icon.textContent = "menu_book";
+                title.appendChild(icon);
+                title.appendChild(document.createTextNode(course.title));
                 const description = document.createElement('p');
                 description.textContent = course.description;
+                infoDiv.appendChild(title);
+                infoDiv.appendChild(description);
+                const buttonsDiv = document.createElement('div');
                 const editButton = document.createElement('button');
-                editButton.textContent = 'Edit';
-                editButton.className = 'bg-yellow-500 text-white px-2 py-1 mr-2';
+                editButton.innerHTML = '<span class="material-icons">edit</span>';
+                editButton.className = 'text-yellow-500 hover:text-yellow-600 mr-2';
                 editButton.onclick = function() {
                     // Implement edit functionality here
                     alert('Edit functionality not implemented yet.');
                 };
                 const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.className = 'bg-red-500 text-white px-2 py-1';
+                deleteButton.innerHTML = '<span class="material-icons">delete</span>';
+                deleteButton.className = 'text-red-500 hover:text-red-600';
                 deleteButton.onclick = function() {
                     if (confirm('Are you sure you want to delete this course?')) {
                         fetch('http://localhost:8000/functions/yt2/delete_course', {
@@ -48,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     }
                 };
-                courseDiv.appendChild(title);
-                courseDiv.appendChild(description);
-                courseDiv.appendChild(editButton);
-                courseDiv.appendChild(deleteButton);
+                buttonsDiv.appendChild(editButton);
+                buttonsDiv.appendChild(deleteButton);
+                courseDiv.appendChild(infoDiv);
+                courseDiv.appendChild(buttonsDiv);
                 coursesDiv.appendChild(courseDiv);
             });
         })

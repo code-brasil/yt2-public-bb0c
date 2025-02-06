@@ -3,12 +3,39 @@
 <head>
     <title>Course Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="course.js"></script>
+    <style>
+        /* Glassmorphism style */
+        body {
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container mx-auto">
+    <div class="glass max-w-4xl w-full">
         <div id="course-content"></div>
     </div>
-    <a href="index.html" class="text-blue-500 hover:underline">Back to Courses</a>
+    <a href="index.html" class="fixed bottom-5 left-5 text-blue-500 hover:underline flex items-center">
+        <span class="material-icons mr-1">arrow_back</span> Back to Courses
+    </a>
 </body>
 </html>

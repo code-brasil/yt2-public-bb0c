@@ -21,24 +21,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const course = data.course;
         const courseContentDiv = document.getElementById('course-content');
         const title = document.createElement('h1');
-        title.className = "text-3xl font-bold mb-4";
-        title.textContent = course.title;
+        title.className = "text-4xl font-bold mb-6 flex items-center";
+        const icon = document.createElement('span');
+        icon.className = "material-icons mr-2";
+        icon.textContent = "menu_book";
+        title.appendChild(icon);
+        title.appendChild(document.createTextNode(course.title));
         const description = document.createElement('p');
+        description.className = "mb-6";
         description.textContent = course.description;
         courseContentDiv.appendChild(title);
         courseContentDiv.appendChild(description);
 
         course.videos.forEach(video => {
             const videoDiv = document.createElement('div');
-            videoDiv.className = "my-4";
+            videoDiv.className = "my-8 flex justify-center";
             const iframe = document.createElement('iframe');
-            iframe.width = "560";
-            iframe.height = "315";
+            iframe.width = "640";
+            iframe.height = "360";
             iframe.src = video.url.replace("watch?v=", "embed/");
             iframe.title = "YouTube video player";
             iframe.frameBorder = "0";
             iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
             iframe.allowFullscreen = true;
+            iframe.className = "rounded-lg shadow-lg transition transform hover:scale-105";
             videoDiv.appendChild(iframe);
             courseContentDiv.appendChild(videoDiv);
         });

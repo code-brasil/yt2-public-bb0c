@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Fetch levels and populate select options
+    fetch('http://localhost:8000/functions/yt2/get_levels', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const levelSelect = document.getElementById('level-id');
+        data.levels.forEach(level => {
+            const option = document.createElement('option');
+            option.value = level.id;
+            option.textContent = level.name;
+            levelSelect.appendChild(option);
+        });
+    });
+
     // Fetch and display existing courses
     function loadCourses() {
         fetch('http://localhost:8000/functions/yt2/get_courses', {
@@ -77,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const description = document.getElementById('description').value;
         const videoUrlsText = document.getElementById('video-urls').value;
         const videoUrls = videoUrlsText.split('\n').map(url => url.trim()).filter(url => url);
+        const levelId = document.getElementById('level-id').value;
 
         fetch('http://localhost:8000/functions/yt2/add_course', {
             method: 'POST',
@@ -86,7 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify({
                 'title': title,
                 'description': description,
-                'video_urls': videoUrls
+                'video_urls': videoUrls,
+                'level_id': levelId
             })
         })
         .then(response => response.json())
